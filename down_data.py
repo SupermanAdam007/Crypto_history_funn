@@ -38,6 +38,8 @@ class Downloader(object):
 		fsyms: coin from: ex. 'XMR'
 		tsyms: coin to: ex. 'BTC'
 		e: markets, ex. 'Poloniex' ... default
+		aggregate: min = 1
+		limit: min = 1, max = 2000
 		"""
 		if e == '':
 			e = self.market
