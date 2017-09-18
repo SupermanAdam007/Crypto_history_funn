@@ -1,0 +1,3 @@
+TODO: 
+1) Load true value of pair BTC/USD from Poloniex and use it in the Market class for evaluation "aprox."
+2) Multi coins based virtual market (maybe choosing in every time which coin should buy/sell) - Important!!
