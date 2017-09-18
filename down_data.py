@@ -7,7 +7,7 @@ class Downloader(object):
 		self.url = 'https://min-api.cryptocompare.com/data/'
 		self.DEFAULT_MARKET = 'Poloniex'
 
-	def get_pricemulti(self, fsyms, tsyms, e=''):
+	def get_pricemulti(self, fsyms, tsyms, e='', verbose=True):
 		"""
 		fsyms: list of coins from
 		tsyms: list of coins to
@@ -23,11 +23,13 @@ class Downloader(object):
 			'tsyms=' + ','.join(tsyms), 
 			'e=' + e])
 
-		print('get_pricemulti request: ' + req)
+		if verbose:
+			print('get_pricemulti request: ' + req)
+
 		res = requests.get(req)
 		return res
 
-	def get_histo(self, fsym, tsym, limit=60, aggregate=1, e='', t_horiz='minute'):
+	def get_histo(self, fsym, tsym, limit=60, aggregate=1, e='', t_horiz='minute', verbose=True):
 		"""
 		t_horiz: minute, hour, day
 		fsyms: coin from: ex. 'XMR'
@@ -51,13 +53,15 @@ class Downloader(object):
 			'aggregate=' + str(aggregate), 
 			'e=' + e])
 
-		print('get_histo' + t_horiz + ' request: ' + req)
+		if verbose:
+			print('get_histo' + t_horiz + ' request: ' + req)
+
 		res = requests.get(req)
 		return res
 
 
-	def get_pricemulti_json(self, fsyms, tsyms, e=''):
-		return self.get_pricemulti(fsyms, tsyms, e).json()
+	def get_pricemulti_json(self, fsyms, tsyms, e='', verbose=True):
+		return self.get_pricemulti(fsyms, tsyms, e, verbose).json()
 
-	def get_histo_json(self, fsym, tsym, limit=60, aggregate=1, e='', t_horiz='minute'):
-		return self.get_histo(fsym, tsym, limit, aggregate, e, t_horiz).json()
+	def get_histo_json(self, fsym, tsym, limit=60, aggregate=1, e='', t_horiz='minute', verbose=True):
+		return self.get_histo(fsym, tsym, limit, aggregate, e, t_horiz, verbose).json()
